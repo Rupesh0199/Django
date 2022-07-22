@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<title>User Info</title>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="userinfo_wrap">
+  {% if error %}
+  <p class="userinfo_error"><strong>Error:</strong> No data
+    {% elif list %}
+  <form action="" method="post">
+    <table class="userinfo_table" style="width:100%">
+      <tr class="userinfo_tr">
+        <th class="userinfo_th">User Name</th>
+        <th class="userinfo_th">Role</th>
+        <th class="userinfo_th">Delete</th>
+      </tr>
+      {% for i in list %}
+      <tr class="userinfo_tr">
+        <td class="userinfo_td">{{i.user_name}}</td>
+        <td class="userinfo_td">{{i.role}}</td>
+        <td class="userinfo_td" id="userinfo_delete" name="delete">
+          {% if i.role == 'Live Agent' %}
+          <a id="userinfo_delete" type="submit" name="data" onclick="return confirm('Confirm!!!!')"
+            href="deleteuser/{{i.user_name}}">Delete</a>
+          {% else %}
+          <a id="userinfo_delete" type="submit" name="data" onclick="return alert('Action Not Allowed')"
+            href="#">Delete</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </form>
+  {% endif %}
+  <div class="userinfo_buttonclass">
+    <button class="userinfo_button userinfo_button1" onclick="window.location.href='../adduser';">Add User</button>
+  </div>
+</div>
+
+<div class='swanky_wrapper' style="float: right;">
+  <input id='Settings' radio='radio' type='radio'>
+  <label for='Settings'>
+    <img
+      src='https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-31634946729lnhivlto5f.png'>
+    <span>
+      <a href="/login" style="color: white; text-decoration: none;">Hello, {{name}}</a>
+    </span>
+  </label>
+  <input id='Logout' radio='radio' type='radio'>
+  <label for='Logout'>
+    <span>
+      <a href="/logout" style="color: white; text-decoration: none;">Log Out</a>
+    </span>
+  </label>
+</div>
+</div>
+
+{% endblock %}

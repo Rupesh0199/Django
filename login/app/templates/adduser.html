@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<title>Add User</title>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="adduser_container">
+    <div class="adduser_screen">
+        <div class="adduser_screen__content">
+            <form class="adduser_login" method="post" action="">
+                {% csrf_token%}
+                <h2>
+                    Add User
+                </h2>
+                <div class="adduser_login__field">
+                    <i class="adduser_login__icon"></i>
+                    <input type="text" name="username" class="adduser_login__input" placeholder="User Name" value="">
+                </div>
+                <div class="adduser_login__field">
+                    <i class="adduser_login__icon"></i>
+                    <input type="Password" name="password" class="adduser_login__input" placeholder="Password" value="">
+                </div>
+                <div class="adduser_login__field">
+                    <i class="adduser_login__icon"></i>
+                    <input type="Password" name="cnfpassword" class="adduser_login__input"
+                        placeholder="Confirm Password" value="">
+                </div>
+                {% if error %}
+                <h6 class="adduser_error">
+                    Error:{{ error }}
+                </h6>
+                {% endif %}
+                <label>
+                    Select RoleType
+                </label>
+                <select id="adduser_role" name="role" value="">
+                    <option id="adduser_role" value="l">
+                        Live Agent
+                    </option>
+                    <!-- <option id = "adduser_role"value = "a"> 
+                        Admin 
+                        </option> -->
+                </select>
+                <input type="submit" name="log" class="adduser_login__submit" value="Add User">
+            </form>
+        </div>
+        <div class="adduser_screen__background">
+            <span class="adduser_screen__background__shape adduser_screen__background__shape4"></span>
+            <span class="adduser_screen__background__shape adduser_screen__background__shape3"></span>
+            <span class="adduser_screen__background__shape adduser_screen__background__shape2"></span>
+            <span class="adduser_screen__background__shape adduser_screen__background__shape1"></span>
+        </div>
+    </div>
+
+    <div class='swanky_wrapper' style="float: right;">
+        <input id='Settings' radio='radio' type='radio'>
+        <label for='Settings'>
+            <img
+                src='https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-31634946729lnhivlto5f.png'>
+            <span>
+                <a href="/login" style="color: white; text-decoration: none;">
+                    Hello, {{name}}
+                </a>
+            </span>
+        </label>
+        <input id='Logout' radio='radio' type='radio'>
+        <label for='Logout'>
+            <span>
+                <a href="/logout" style="color: white; text-decoration: none;">
+                    Log Out
+                </a>
+            </span>
+        </label>
+    </div>
+
+</div>
+
+{% endblock %}

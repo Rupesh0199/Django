@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<title>Uplaod File</title>
+
+{% endblock %}
+
+{% block content %}
+<div class="upload_upload">
+  <h2 class="upload_h2">Upload File</h2><br>
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" id="upload_myFile" name="filename">
+    {% if error %}
+    <h3 style="text-align:center; color: red;">{{error}}</h3>
+    {% endif %}
+    <input class="upload_uploadsubmit upload_button" type="submit" value="Upload File">
+  </form>
+</div>
+<div class='swanky_wrapper' style="float: right;">
+  <input id='Settings' radio='radio' type='radio'>
+  <label for='Settings'>
+    <img
+      src='https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-31634946729lnhivlto5f.png'>
+    <span>
+      <a href="/login" style="color: white; text-decoration: none;">Hello, {{name}}</a>
+    </span>
+  </label>
+  <input id='Logout' radio='radio' type='radio'>
+  <label for='Logout'>
+    <span>
+      <a href="/logout" style="color: white; text-decoration: none;">Log Out</a>
+    </span>
+  </label>
+</div>
+</div>
+{% endblock %}

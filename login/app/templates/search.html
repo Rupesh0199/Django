@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<title>Search</title>
+
+{% endblock %}
+
+{% block content %}
+<div class="search_wrap">
+  <form class="search_search" method="post">
+    {% csrf_token%}
+    <input type="text" name="search" class="search_searchTerm" placeholder="Case ID" value="{{request.form.search }}">
+    <input type="submit" name="ser" id="search_ser" value="Search">
+  </form>
+  {% if error %}
+  <p class="search_error"><strong>Error:</strong> {{ error }}
+    {% elif search_element %}
+  <table class="search_table" style="width:100%">
+    <tr class="search_tr">
+      <th class="search_th">intent_id</th>
+      <th class="search_th">intent_image</th>
+      <th class="search_th">intent_name</th>
+    </tr>
+    <tr class="search_tr">
+      <td class="search_td">{{search_element.intent_id}}</td>
+      <td class="search_td">{{search_element.intent_name}}</td>
+      <td class="search_td">{{search_element.intent_image}}</td>
+    </tr>
+  </table>
+  {% endif %}
+</div>
+
+<div class='swanky_wrapper' style="float: right;">
+  <input id='Settings' radio='radio' type='radio'>
+  <label for='Settings'>
+    <img
+      src='https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-31634946729lnhivlto5f.png'>
+    <span>
+      <a href="/login" style="color: white; text-decoration: none;">Hello, {{name}}</a>
+    </span>
+  </label>
+  <input id='Logout' radio='radio' type='radio'>
+  <label for='Logout'>
+    <span>
+      <a href="/logout" style="color: white; text-decoration: none;">Log Out</a>
+    </span>
+  </label>
+</div>
+</div>
+{% endblock %}

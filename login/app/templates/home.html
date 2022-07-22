@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<title>Login Form</title>
+<script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <form class="login" method="post" action="">
+                {% csrf_token %}
+                <h2>Login</h2>
+                <div class="login__field">
+                    <i class="login__icon fas fa-user"></i>
+                    <input type="text" name="username" class="login__input" placeholder="User Name"
+                        value="{{request.form.username }}">
+                </div>
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="Password" name="password" class="login__input" placeholder="Password"
+                        value="{{request.form.password }}">
+                </div>
+                {% if error %}
+                <h6 class="error">Error: {{ error }}</h6>
+                {% endif %}
+                <input type="submit" name="log" class="login__submit" value="Log In Here">
+            </form>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

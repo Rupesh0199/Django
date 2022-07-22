@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block head %}
+
+<title>Menu</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="menu_buttonclass">
+  <button class="menu_button menu_button1" onclick="window.location.href='../userinfo';">Manage Account</button>
+  <button class="menu_button menu_button2" onclick="window.location.href='../search';">Ticket</button>
+  <button class="menu_button menu_button3" onclick="window.location.href='../uploadfile';">Upload File</button>
+</div>
+
+<div class='swanky_wrapper' style="float: right;">
+  <input id='Settings' radio='radio' type='radio'>
+  <label for='Settings'>
+    <img
+      src='https://www.citypng.com/public/uploads/preview/white-user-member-guest-icon-png-image-31634946729lnhivlto5f.png'>
+    <span>
+      <a href="/login" style="color: white; text-decoration: none;">Hello, {{name}}</a>
+    </span>
+  </label>
+  <input id='Logout' radio='radio' type='radio'>
+  <label for='Logout'>
+    <span>
+      <a href="/logout" style="color: white; text-decoration: none;">Log Out</a>
+    </span>
+  </label>
+</div>
+</div>
+{% endblock %}
